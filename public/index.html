@@ -104,78 +104,6 @@ footer{border-top:1px solid rgba(0,255,204,.05);padding:20px 24px;text-align:cen
   <div id="splash-txt" style="color:#6688aa;font-size:11px;font-family:'Share Tech Mono',monospace;letter-spacing:1px">Initializing systems...</div>
 </div>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen" style="display:none;min-height:100vh;background:#060b14;display:none;align-items:center;justify-content:center;padding:20px" class="hex-bg">
-  <div style="position:fixed;top:-10%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,204,.06),transparent);filter:blur(80px);pointer-events:none"></div>
-  <div style="width:100%;max-width:420px">
-    <!-- Logo -->
-    <div style="text-align:center;margin-bottom:28px">
-      <svg width="52" height="52" viewBox="0 0 100 100" style="margin-bottom:10px">
-        <circle cx="50" cy="50" r="10" fill="#00ffcc" opacity=".9"/>
-        <circle cx="50" cy="25" r="9" fill="#00cc88"/><circle cx="70" cy="38" r="9" fill="#44aaff"/>
-        <circle cx="70" cy="62" r="9" fill="#9944ff"/><circle cx="50" cy="75" r="9" fill="#0044ff"/>
-        <circle cx="30" cy="62" r="9" fill="#ff6b35"/><circle cx="30" cy="38" r="9" fill="#ff4444"/>
-        <line x1="50" y1="50" x2="50" y2="25" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-        <line x1="50" y1="50" x2="70" y2="38" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-        <line x1="50" y1="50" x2="70" y2="62" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-        <line x1="50" y1="50" x2="50" y2="75" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-        <line x1="50" y1="50" x2="30" y2="62" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-        <line x1="50" y1="50" x2="30" y2="38" stroke="rgba(0,255,204,.4)" stroke-width="1.5"/>
-      </svg>
-      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:26px;letter-spacing:2px"><span style="color:#00ffcc">Spider</span><span>HUB</span></div>
-      <div style="color:#6688aa;font-size:10px;font-family:'Share Tech Mono',monospace;letter-spacing:3px;margin-top:2px">DIGITAL INCOME HUB</div>
-    </div>
-    <!-- Auth card -->
-    <div class="card" style="padding:28px">
-      <!-- Tabs -->
-      <div style="display:flex;background:rgba(0,255,204,.04);border:1px solid rgba(0,255,204,.1);border-radius:8px;padding:3px;margin-bottom:24px">
-        <button id="tab-login" class="btn" onclick="authTab('login')" style="flex:1;padding:8px;border-radius:6px;font-size:12px;background:linear-gradient(135deg,#00ffcc,#0077ff);color:#060b14">Sign In</button>
-        <button id="tab-register" class="btn btn-ghost" onclick="authTab('register')" style="flex:1;padding:8px;border-radius:6px;font-size:12px;border:none">Register</button>
-      </div>
-      <div id="auth-error" style="display:none;background:rgba(255,68,68,.08);border:1px solid rgba(255,68,68,.2);border-radius:7px;padding:10px 14px;color:#ff8888;font-size:13px;margin-bottom:16px"></div>
-      <!-- Login form -->
-      <div id="form-login">
-        <input class="input" id="login-email" type="email" placeholder="Email address" style="margin-bottom:12px"/>
-        <input class="input" id="login-password" type="password" placeholder="Password" style="margin-bottom:18px"/>
-        <button class="btn btn-cyan" onclick="doLogin()" style="width:100%;padding:13px;border-radius:8px;font-size:14px;margin-bottom:14px" id="login-btn">Sign In to Dashboard</button>
-        <div style="text-align:center;font-size:13px;color:#6688aa">
-          No account? <span style="color:#00ffcc;cursor:pointer;font-weight:700" onclick="authTab('register')">Register →</span>
-        </div>
-        <div style="text-align:center;margin-top:10px">
-          <span style="color:#6688aa;font-size:12px;cursor:pointer" onclick="showForgot()">Forgot password?</span>
-        </div>
-      </div>
-      <!-- Register form -->
-      <div id="form-register" style="display:none">
-        <input class="input" id="reg-name" type="text" placeholder="Username" style="margin-bottom:12px"/>
-        <input class="input" id="reg-email" type="email" placeholder="Email address" style="margin-bottom:12px"/>
-        <input class="input" id="reg-password" type="password" placeholder="Password (min 6 chars)" style="margin-bottom:12px"/>
-        <input class="input" id="reg-confirm" type="password" placeholder="Confirm password" style="margin-bottom:18px"/>
-        <button class="btn btn-cyan" onclick="doRegister()" style="width:100%;padding:13px;border-radius:8px;font-size:14px;margin-bottom:14px" id="reg-btn">Create Account</button>
-        <div style="text-align:center;font-size:13px;color:#6688aa">
-          Have an account? <span style="color:#00ffcc;cursor:pointer;font-weight:700" onclick="authTab('login')">Sign in →</span>
-        </div>
-      </div>
-      <!-- Forgot password -->
-      <div id="form-forgot" style="display:none">
-        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;margin-bottom:6px">Reset Password</div>
-        <p style="color:#6688aa;font-size:13px;margin-bottom:18px">Enter your email to receive a reset code.</p>
-        <input class="input" id="forgot-email" type="email" placeholder="Email address" style="margin-bottom:12px"/>
-        <button class="btn btn-cyan" onclick="doForgot()" style="width:100%;padding:13px;border-radius:8px;font-size:14px;margin-bottom:14px">Send Reset Code</button>
-        <div style="text-align:center"><span style="color:#00ffcc;font-size:13px;cursor:pointer" onclick="authTab('login')">← Back to Sign In</span></div>
-      </div>
-      <!-- Reset password -->
-      <div id="form-reset" style="display:none">
-        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;margin-bottom:18px">Enter New Password</div>
-        <input class="input" id="reset-otp" type="text" placeholder="OTP Code" maxlength="6" style="margin-bottom:12px"/>
-        <input class="input" id="reset-pw" type="password" placeholder="New password" style="margin-bottom:12px"/>
-        <input class="input" id="reset-confirm" type="password" placeholder="Confirm new password" style="margin-bottom:18px"/>
-        <button class="btn btn-cyan" onclick="doReset()" style="width:100%;padding:13px;border-radius:8px;font-size:14px">Reset Password</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- APP SHELL -->
 <div id="app-shell" style="display:none;background:#060b14">
   <!-- Background orbs -->
@@ -238,7 +166,6 @@ footer{border-top:1px solid rgba(0,255,204,.05);padding:20px 24px;text-align:cen
       <p style="color:#6688aa;font-size:11px;margin-bottom:10px;line-height:1.6">Unlock all features from just $0.65/mo</p>
       <button class="btn btn-cyan" onclick="navigate('payment')" style="width:100%;padding:8px;border-radius:7px;font-size:11px">Upgrade Now</button>
     </div>
-    <button class="btn" onclick="doLogout()" style="margin:0 10px 16px;padding:10px;border-radius:8px;background:rgba(255,68,68,.08);color:#ff8888;border:1px solid rgba(255,68,68,.2);font-family:'Rajdhani',sans-serif;letter-spacing:1px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;width:calc(100% - 20px)">🚪 LOGOUT</button>
   </aside>
   <div id="sidebar-overlay" onclick="closeSidebar()"></div>
 
@@ -267,12 +194,6 @@ footer{border-top:1px solid rgba(0,255,204,.05);padding:20px 24px;text-align:cen
 // ════════════════════════════════════════════
 window.onerror = function(msg, src, line, col, err){
   console.error('[SpiderHub]', msg, src, line+':'+col);
-  const sp = document.getElementById('splash');
-  if(sp && sp.style.display !== 'none'){
-    sp.style.display = 'none';
-    const as = document.getElementById('auth-screen');
-    if(as) as.style.display = 'flex';
-  }
   return false;
 };
 window.addEventListener('unhandledrejection', e => console.error('[SpiderHub Promise]', e.reason));
@@ -317,7 +238,7 @@ const NAV = [
 //  STATE
 // ════════════════════════════════════════════
 const S = {
-  user: null,
+  user: { uid:'guest', email:'', name:'Spider', plan:'free', isAdmin:false, avatar:'', wallet_balance:0, bio:'' },
   page: 'dashboard',
   footerClicks: 0,
   footerTimer: null,
@@ -332,17 +253,10 @@ const S = {
   aiLoading: false,
   botStatus: [],
   pairPhone:'', pairCode:'', pairStep:0, pairing:false,
-  authMode: 'login', // login | register | otp | forgot | reset
-  pendingEmail: '',
   tools: { tab:'qr', qrVal:'', qrResult:'', shortInput:'', shortResult:'' },
 };
 
-function token(){ return localStorage.getItem('sh_token') || ''; }
-function authH(){ return { 'Content-Type':'application/json', Authorization:`Bearer ${token()}` }; }
 
-// ════════════════════════════════════════════
-//  AUTH MODULE
-// ════════════════════════════════════════════
 async function apiPost(path, body){
   const r = await fetch(API + path, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
   const d = await r.json();
@@ -350,114 +264,24 @@ async function apiPost(path, body){
   return d;
 }
 
-async function doLogin(){
-  const email = _v('login-email'), pw = _v('login-password');
-  if (!email||!pw) return showAuthErr('Fill in all fields');
-  setBtnLoad('login-btn', true, 'Signing in...');
-  try {
-    const d = await apiPost('/auth/login', { email, password:pw });
-    localStorage.setItem('sh_token', d.token);
-    S.user = { uid:d.user.id, email:d.user.email, name:d.user.username, plan:'free', isAdmin:d.user.role==='admin', avatar:d.user.avatar||'', wallet_balance:d.user.wallet_balance||0, bio:d.user.bio||'' };
-    localStorage.setItem('sh_current', JSON.stringify(S.user));
-    showApp();
-  } catch(e){ showAuthErr(e.message); }
-  setBtnLoad('login-btn', false, 'Sign In to Dashboard');
-}
-
-async function doRegister(){
-  const name=_v('reg-name'), email=_v('reg-email'), pw=_v('reg-password'), conf=_v('reg-confirm');
-  if(!name||!email||!pw) return showAuthErr('Fill in all fields');
-  if(pw!==conf) return showAuthErr('Passwords do not match');
-  if(pw.length<6) return showAuthErr('Password must be at least 6 characters');
-  setBtnLoad('reg-btn', true, 'Creating account...');
-  try {
-    const d = await apiPost('/auth/register', { username:name, email, password:pw });
-    localStorage.setItem('sh_token', d.token);
-    S.user = { uid:d.user.id, email:d.user.email, name:d.user.username, plan:'free', isAdmin:d.user.role==='admin', avatar:d.user.avatar||'', wallet_balance:d.user.wallet_balance||0, bio:d.user.bio||'' };
-    localStorage.setItem('sh_current', JSON.stringify(S.user));
-    showApp();
-  } catch(e){ showAuthErr(e.message); }
-  setBtnLoad('reg-btn', false, 'Create Account');
-}
-
-function showForgot(){ showAuthForm('forgot'); }
-
-async function doForgot(){
-  const email = _v('forgot-email');
-  if(!email) return showAuthErr('Enter your email');
-  try {
-    const d = await apiPost('/auth/send-otp', { email });
-    localStorage.setItem('sh_pending_uid', d.userId);
-    S.pendingEmail = email;
-    S.authMode = 'otp-reset';
-    showAuthForm('otp');
-    _el('otp-title').textContent = 'Reset Password';
-    _el('otp-sub').textContent = `We sent a reset code to ${email}`;
-  } catch(e){ showAuthErr(e.message); }
-}
-
-async function doReset(){
-  const otp=_v('reset-otp'), pw=_v('reset-pw'), conf=_v('reset-confirm');
-  if(!otp||!pw) return showAuthErr('Fill in all fields');
-  if(pw!==conf) return showAuthErr('Passwords do not match');
-  try {
-    await apiPost('/auth/reset-password', { userId:localStorage.getItem('sh_pending_uid'), otp, newPassword:pw });
-    showAuthErr('Password reset! Please sign in.', true);
-    setTimeout(()=>authTab('login'), 1500);
-  } catch(e){ showAuthErr(e.message); }
-}
-
-async function doLogout(){
-  localStorage.removeItem('sh_current'); localStorage.removeItem('sh_token');
-  S.user = null; S.aiMessages = []; S.posts = [];
-  hide('app-shell'); show('auth-screen'); authTab('login');
-}
-
-// ════════════════════════════════════════════
-//  AUTH UI HELPERS
-// ════════════════════════════════════════════
-function authTab(t){
-  const tabs = { login:'Sign In', register:'Register' };
-  _el('tab-login').className = 'btn' + (t==='login' ? ' btn-cyan' : ' btn-ghost');
-  _el('tab-login').style.cssText = t==='login' ? 'flex:1;padding:8px;border-radius:6px;font-size:12px;background:linear-gradient(135deg,#00ffcc,#0077ff);color:#060b14;border:none' : 'flex:1;padding:8px;border-radius:6px;font-size:12px;background:rgba(255,255,255,.04);color:#e8f4ff;border:1px solid rgba(255,255,255,.08)';
-  _el('tab-register').className = 'btn' + (t==='register' ? ' btn-cyan' : ' btn-ghost');
-  _el('tab-register').style.cssText = t==='register' ? 'flex:1;padding:8px;border-radius:6px;font-size:12px;background:linear-gradient(135deg,#00ffcc,#0077ff);color:#060b14;border:none' : 'flex:1;padding:8px;border-radius:6px;font-size:12px;background:rgba(255,255,255,.04);color:#e8f4ff;border:1px solid rgba(255,255,255,.08)';
-  showAuthForm(t);
-  hideAuthErr();
-}
-function showAuthForm(f){
-  ['login','register','forgot','reset'].forEach(x=>{ _el('form-'+x).style.display = x===f?'block':'none'; });
-}
-function showAuthErr(msg, success=false){
-  const el = _el('auth-error');
-  el.style.display='block';
-  el.style.background = success?'rgba(0,200,100,.08)':'rgba(255,68,68,.08)';
-  el.style.borderColor = success?'rgba(0,200,100,.2)':'rgba(255,68,68,.2)';
-  el.style.color = success?'#00cc88':'#ff8888';
-  el.textContent=msg;
-}
-function hideAuthErr(){ _el('auth-error').style.display='none'; }
+function doLogout(){ location.reload(); }
 
 // ════════════════════════════════════════════
 //  APP INIT / NAVIGATION
 // ════════════════════════════════════════════
 function showApp(){
   try {
-    hide('auth-screen'); show('app-shell');
+    show('app-shell');
     const u = S.user;
-  const init = u.name?.[0]?.toUpperCase()||'U';
+  const init = u.name?.[0]?.toUpperCase()||'S';
   _el('nav-avatar').textContent = init;
-  _el('nav-name').textContent = u.name?.split(' ')[0]||'User';
+  _el('nav-name').textContent = u.name?.split(' ')[0]||'Spider';
   _el('sb-avatar').textContent = init;
-  _el('sb-name').textContent = u.name||'User';
+  _el('sb-name').textContent = u.name||'Spider';
   buildSidebarNav();
   navigate('dashboard');
   } catch(e){
     console.error('showApp crash:', e);
-    // Session may be corrupted — clear and show login
-    localStorage.removeItem('sh_current'); localStorage.removeItem('sh_token');
-    hide('app-shell'); show('auth-screen');
-    const as=_el('auth-screen'); if(as) as.style.display='flex';
   }
 }
 
@@ -1220,71 +1044,19 @@ activity(){
 // ── PROFILE PAGE ──
 profile(){
   const u = S.user||{};
-  const initials = (u.name||'U')[0].toUpperCase();
+  const initials = (u.name||'S')[0].toUpperCase();
   return `<div class="fade-up">
-    ${pageHeader(`${ico('user',14,'#00ffcc')} Profile`,'Your <span style="color:#00ffcc">Account</span>','Update your profile, password and wallet.')}
+    ${pageHeader(`${ico('user',14,'#00ffcc')} Profile`,'Your <span style="color:#00ffcc">Profile</span>','Spider Hub')}
     <div style="max-width:680px;display:flex;flex-direction:column;gap:16px">
-
-      <!-- IDENTITY CARD -->
       <div class="card" style="padding:22px">
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
+        <div style="display:flex;align-items:center;gap:16px">
           <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#00ffcc,#0077ff);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;color:#060b14;flex-shrink:0">${initials}</div>
-          <div style="flex:1;min-width:0">
-            <div style="font-weight:700;font-size:18px;font-family:'Rajdhani',sans-serif">${u.name||'User'}</div>
-            <div style="color:#6688aa;font-size:13px;margin-bottom:4px">${u.email||''}</div>
-            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-              <span class="badge">${u.isAdmin?'ADMIN':'FREE PLAN'}</span>
-              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#6688aa">ID: ${(u.uid||'').substring(0,8)}…</span>
-              <button onclick="copyUID()" style="background:none;border:none;color:#00ffcc;cursor:pointer;font-size:10px;font-family:'Share Tech Mono',monospace;padding:0">[copy ID]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- WALLET SUMMARY -->
-        <div style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);border-radius:10px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
           <div>
-            <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#6688aa;margin-bottom:4px">YOUR COPS BALANCE</div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:900;color:#FFD700;line-height:1">
-              ${ico('zap',18,'#FFD700')} ${Number(u.wallet_balance||0).toLocaleString()} <span style="font-size:14px">COPS</span>
-            </div>
-            <div style="color:#6688aa;font-size:11px;margin-top:4px">≈ $${(Number(u.wallet_balance||0)*0.012).toFixed(2)} USD &nbsp;·&nbsp; 50 COPS = $0.60</div>
+            <div style="font-weight:700;font-size:18px;font-family:'Rajdhani',sans-serif">${u.name||'Spider'}</div>
+            <div style="color:#6688aa;font-size:13px;margin-top:2px">SpiderHub Member</div>
           </div>
-          <button class="btn btn-ghost" onclick="loadWalletHistory()" style="padding:8px 16px;border-radius:7px;font-size:12px;color:#FFD700;border-color:rgba(255,215,0,.3)">${ico('stats',13,'#FFD700')} History</button>
-        </div>
-        <div id="wallet-history" style="display:none;margin-bottom:18px"></div>
-
-        <!-- EDIT PROFILE -->
-        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:#00ffcc;margin-bottom:12px;letter-spacing:1px">EDIT PROFILE</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <input class="input" id="prof-name" placeholder="Username" value="${u.name||''}"/>
-          <input class="input" id="prof-bio" placeholder="Bio (optional)" value="${u.bio||''}"/>
-          <input class="input" id="prof-avatar" placeholder="Avatar URL (optional)" value="${u.avatar||''}"/>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-cyan" onclick="saveProfile()" id="prof-save-btn" style="padding:11px 24px;border-radius:8px;flex:1">${ico('check',14,'#060b14')} Save Profile</button>
-          </div>
-          <div id="prof-msg" style="display:none;padding:8px 12px;border-radius:6px;font-size:13px"></div>
         </div>
       </div>
-
-      <!-- CHANGE PASSWORD -->
-      <div class="card" style="padding:20px">
-        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:#ff6b35;margin-bottom:14px;letter-spacing:1px;display:flex;align-items:center;gap:6px">${ico('lock',14,'#ff6b35')} CHANGE PASSWORD</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <input class="input" id="pw-current" type="password" placeholder="Current password"/>
-          <input class="input" id="pw-new" type="password" placeholder="New password (min 6 chars)"/>
-          <input class="input" id="pw-confirm" type="password" placeholder="Confirm new password"/>
-          <button class="btn btn-outline" onclick="changePassword()" id="pw-btn" style="padding:11px;border-radius:8px;font-size:13px">${ico('lock',14,'currentColor')} Update Password</button>
-          <div id="pw-msg" style="display:none;padding:8px 12px;border-radius:6px;font-size:13px"></div>
-        </div>
-      </div>
-
-      <!-- LOGOUT -->
-      <div class="card" style="padding:18px">
-        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:#ff6b6b;margin-bottom:10px;letter-spacing:1px">DANGER ZONE</div>
-        <p style="color:#6688aa;font-size:13px;margin-bottom:14px">Sign out of your SpiderHub account on this device.</p>
-        <button class="btn btn-red" onclick="doLogout()" style="padding:10px 24px;border-radius:8px;font-size:13px">${ico('close',13)} Logout</button>
-      </div>
-
     </div>
   </div>`;
 },
@@ -1603,9 +1375,8 @@ function initCrypto(){ if(!S.crypto.coins.length) loadCrypto(); }
 // ════════════════════════════════════════════
 async function loadNewsPage(){
   const el = _el('news-list'); if(!el) return;
-  const token = localStorage.getItem('sh_token');
   try {
-    const r = await fetch('/api/news', { headers: { Authorization: `Bearer ${token}` } });
+    const r = await fetch('/api/news', { headers: { 'Content-Type':'application/json' } });
     const d = await r.json();
     const news = d.news || [];
     if(!news.length){
@@ -1682,7 +1453,7 @@ function initCommunity(){ if(!S.posts.length) loadPosts(); }
 async function loadPosts(){
   S.postsLoading=true; updatePostsList();
   try {
-    const r=await fetch(`${API}/posts?page=1`,{headers:authH()});
+    const r=await fetch(`${API}/posts?page=1`,{headers:{'Content-Type':'application/json'}});
     const d=await r.json();
     S.posts=Array.isArray(d)?d:[];
   } catch(e){ console.error(e); }
@@ -1691,7 +1462,7 @@ async function loadPosts(){
 async function loadMorePosts(){
   S.postsPage++;
   try {
-    const r=await fetch(`${API}/posts?page=${S.postsPage}`,{headers:authH()});
+    const r=await fetch(`${API}/posts?page=${S.postsPage}`,{headers:{'Content-Type':'application/json'}});
     const d=await r.json();
     if(Array.isArray(d)&&d.length) S.posts=[...S.posts,...d];
   } catch(e){}
@@ -1701,7 +1472,7 @@ async function createPost(){
   const content=_v('post-input').trim(); if(!content)return;
   setBtnLoad('post-btn',true,'Posting...');
   try {
-    const r=await fetch(`${API}/posts`,{method:'POST',headers:authH(),body:JSON.stringify({content})});
+    const r=await fetch(`${API}/posts`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content})});
     const d=await r.json();
     if(r.ok){ S.posts=[d,...S.posts]; _el('post-input').value=''; updatePostsList(); }
   } catch(e){}
@@ -1709,7 +1480,7 @@ async function createPost(){
 }
 async function toggleLike(postId){
   try {
-    const r=await fetch(`${API}/posts/${postId}/like`,{method:'PUT',headers:authH()});
+    const r=await fetch(`${API}/posts/${postId}/like`,{method:'PUT',headers:{'Content-Type':'application/json'}});
     const d=await r.json();
     S.posts=S.posts.map(p=>p.id===postId?{...p,likeCount:d.likes,liked:d.liked}:p);
     updatePostsList();
@@ -1800,7 +1571,7 @@ async function sendAI(){
   try {
     const r=await fetch(`${API}/ai/chat`,{
       method:'POST',
-      headers:{...authH(),'Content-Type':'application/json'},
+      headers:{...{'Content-Type':'application/json'},'Content-Type':'application/json'},
       body:JSON.stringify({messages:S.aiMessages.map(m=>({role:m.role,content:m.content}))})
     });
     const d=await r.json();
@@ -1815,7 +1586,7 @@ async function sendAI(){
 function aiSuggestion(s){ S.aiMessages.push({role:'user',content:s}); S.aiLoading=true; navigate('ai'); setTimeout(()=>sendAIMsg(s),100); }
 async function sendAIMsg(input){
   try {
-    const r=await fetch(`${API}/ai/chat`,{method:'POST',headers:{...authH(),'Content-Type':'application/json'},body:JSON.stringify({messages:S.aiMessages.map(m=>({role:m.role,content:m.content}))})});
+    const r=await fetch(`${API}/ai/chat`,{method:'POST',headers:{...{'Content-Type':'application/json'},'Content-Type':'application/json'},body:JSON.stringify({messages:S.aiMessages.map(m=>({role:m.role,content:m.content}))})});
     const d=await r.json();
     S.aiMessages.push({role:'assistant',content:d.content?.[0]?.text||d.message||'Sorry, no response.'});
   } catch{ S.aiMessages.push({role:'assistant',content:'⚠ Connection error.'}); }
@@ -1902,7 +1673,7 @@ async function saveProfile(){
     if(name) body.username=name;
     if(bio!==undefined) body.bio=bio;
     if(avatar!==undefined) body.avatar=avatar;
-    const r=await fetch(`${API}/users/me`,{method:'PUT',headers:authH(),body:JSON.stringify(body)});
+    const r=await fetch(`${API}/users/me`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json();
     if(r.ok){
       S.user={...S.user,name:d.user?.username||name,bio:d.user?.bio||bio,avatar:d.user?.avatar||avatar,wallet_balance:d.user?.wallet_balance??S.user.wallet_balance};
@@ -1936,7 +1707,7 @@ async function changePassword(){
   if(nw!==conf){showMsg('Passwords do not match',false);return;}
   if(btn)btn.disabled=true;
   try {
-    const r=await fetch(`${API}/users/me/password`,{method:'PUT',headers:authH(),body:JSON.stringify({currentPassword:cur,newPassword:nw})});
+    const r=await fetch(`${API}/users/me/password`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({currentPassword:cur,newPassword:nw})});
     const d=await r.json();
     if(r.ok){
       showMsg('✓ Password changed!',true);
@@ -1957,7 +1728,7 @@ async function loadWalletHistory(){
   el.style.display='block';
   el.innerHTML='<p style="color:#6688aa;font-size:12px">Loading...</p>';
   try {
-    const r=await fetch(`${API}/users/wallet`,{headers:authH()});
+    const r=await fetch(`${API}/users/wallet`,{headers:{'Content-Type':'application/json'}});
     const d=await r.json();
     const txns=d.transactions||[];
     // update live balance
@@ -2067,15 +1838,8 @@ function runSplash(){
     var sp=_el('splash'); if(sp){ sp.style.opacity='0'; sp.style.transition='opacity .3s'; }
     setTimeout(function(){
       if(sp) sp.style.display='none';
-      var saved, tok;
-      try{ saved=localStorage.getItem('sh_current'); tok=localStorage.getItem('sh_token'); }catch(e){}
-      if(saved&&tok){
-        try{ S.user=JSON.parse(saved); show('app-shell'); showApp(); return; }catch(e){ console.error('showApp error:',e); }
-      }
-      // Default: show login
-      var as=_el('auth-screen');
-      if(as){ as.style.display='flex'; }
-      else { location.reload(); }
+      show('app-shell');
+      showApp();
     },350);
   }
 
@@ -2182,7 +1946,7 @@ async function adminTopup(){
   const uid=prompt('Enter User ID to top up:'); if(!uid)return;
   const amt=prompt('Amount in COPS to add (e.g. 50):'); if(!amt||isNaN(amt))return;
   try {
-    const r=await fetch('/api/admin/wallet/topup',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({userId:uid,amount:parseFloat(amt),description:'Admin top-up'})});
+    const r=await fetch('/api/admin/wallet/topup',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({userId:uid,amount:parseFloat(amt),description:'Admin top-up'})});
     const d=await r.json();
     alert(d.message||'Done!');
     adminLoadUsers();
@@ -2217,7 +1981,7 @@ async function adminLoadUsers(){
   </div>
   <div id="admin-users-list"><p style="color:#6688aa;font-size:12px">Loading users...</p></div>`;
   try {
-    const r = await fetch('/api/admin/users', { headers: { Authorization: `Bearer ${localStorage.getItem('sh_token')}` } });
+    const r = await fetch('/api/admin/users', { headers: {  } });
     const d = await r.json();
     const users = d.users || [];
     const panel = _el('admin-users-list'); if(!panel) return;
@@ -2255,7 +2019,7 @@ async function adminToggleRole(userId, currentRole){
   const newRole = currentRole==='admin'?'user':'admin';
   if(!confirm(`Change role to ${newRole}?`)) return;
   try {
-    const r = await fetch(`/api/admin/users/${userId}/role`,{method:'PUT',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({role:newRole})});
+    const r = await fetch(`/api/admin/users/${userId}/role`,{method:'PUT',headers:{'Content-Type':'application/json',},body:JSON.stringify({role:newRole})});
     const d = await r.json(); alert(d.message||'Done!');
     adminLoadUsers();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2264,7 +2028,7 @@ async function adminToggleRole(userId, currentRole){
 async function adminDeleteUser(id){
   if(!confirm('Delete this user? This cannot be undone.')) return;
   try {
-    const r = await fetch(`/api/admin/users/${id}`, { method:'DELETE', headers:{ Authorization:`Bearer ${localStorage.getItem('sh_token')}` }});
+    const r = await fetch(`/api/admin/users/${id}`, { method:'DELETE', headers:{  }});
     const d = await r.json();
     alert(d.message || 'Done');
     adminLoadUsers();
@@ -2281,7 +2045,7 @@ async function adminLoadNews(){
     </div>
     <div id="admin-news-list"><p style="color:#6688aa;font-size:12px">Loading...</p></div>`;
   try {
-    const r = await fetch('/api/admin/news', { headers: { Authorization: `Bearer ${localStorage.getItem('sh_token')}` } });
+    const r = await fetch('/api/admin/news', { headers: {  } });
     const d = await r.json();
     const news = d.news || [];
     const el = _el('admin-news-list'); if(!el) return;
@@ -2365,7 +2129,7 @@ async function adminCreateNews(){
   if(!title||!body){ alert('Title and body required'); return; }
   const icon=_v('an-icon'); const color=_el('an-color').value; const category=_v('an-cat');
   try {
-    const r=await fetch('/api/admin/news',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({title,body,icon,color,category})});
+    const r=await fetch('/api/admin/news',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({title,body,icon,color,category})});
     const d=await r.json(); alert(d.message||'Published!');
     adminLoadNews();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2376,7 +2140,7 @@ async function adminSaveNews(id){
   if(!title||!body){ alert('Title and body required'); return; }
   const icon=_v('an-icon'); const color=_el('an-color').value; const category=_v('an-cat');
   try {
-    const r=await fetch(`/api/admin/news/${id}`,{method:'PUT',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({title,body,icon,color,category})});
+    const r=await fetch(`/api/admin/news/${id}`,{method:'PUT',headers:{'Content-Type':'application/json',},body:JSON.stringify({title,body,icon,color,category})});
     const d=await r.json(); alert(d.message||'Updated!');
     adminLoadNews();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2385,7 +2149,7 @@ async function adminSaveNews(id){
 async function adminDeleteNews(id){
   if(!confirm('Delete this article?')) return;
   try {
-    const r=await fetch(`/api/admin/news/${id}`,{method:'DELETE',headers:{Authorization:`Bearer ${localStorage.getItem('sh_token')}`}});
+    const r=await fetch(`/api/admin/news/${id}`,{method:'DELETE',headers:{}});
     const d=await r.json(); alert(d.message||'Deleted');
     adminLoadNews();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2401,7 +2165,7 @@ async function adminLoadPosts(){
     </div>
     <div id="admin-posts-list"><p style="color:#6688aa;font-size:12px">Loading...</p></div>`;
   try {
-    const r=await fetch('/api/admin/posts',{headers:{Authorization:`Bearer ${localStorage.getItem('sh_token')}`}});
+    const r=await fetch('/api/admin/posts',{headers:{}});
     const d=await r.json();
     const posts=d.posts||[];
     const el=_el('admin-posts-list'); if(!el) return;
@@ -2423,7 +2187,7 @@ async function adminLoadPosts(){
 async function adminAnnounce(){
   const content=prompt('Announcement message to pin to community feed:'); if(!content) return;
   try {
-    const r=await fetch('/api/admin/announce',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({content})});
+    const r=await fetch('/api/admin/announce',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({content})});
     const d=await r.json(); alert(d.message||'Announced!');
     adminLoadPosts();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2432,7 +2196,7 @@ async function adminAnnounce(){
 async function adminDeletePost(id){
   if(!confirm('Delete this post?')) return;
   try {
-    const r=await fetch(`/api/admin/posts/${id}`,{method:'DELETE',headers:{Authorization:`Bearer ${localStorage.getItem('sh_token')}`}});
+    const r=await fetch(`/api/admin/posts/${id}`,{method:'DELETE',headers:{}});
     const d=await r.json(); alert(d.message||'Deleted');
     adminLoadPosts();
   } catch(e){ alert('Failed: '+e.message); }
@@ -2443,7 +2207,7 @@ function adminShowWallet(){
   const body = _el('admin-tab-body'); if(!body) return;
   body.innerHTML = `<p style="color:#6688aa;font-size:12px">Loading users...</p>`;
   // Load users first so we can show a dropdown
-  fetch('/api/admin/users',{headers:{Authorization:`Bearer ${localStorage.getItem('sh_token')}`}})
+  fetch('/api/admin/users',{headers:{}})
     .then(r=>r.json()).then(d=>{
       const users = d.users||[];
       const opts = users.map(u=>`<option value="${u.id}">${u.username} (${u.email}) — ${Number(u.wallet_balance||0).toLocaleString()} ⚡</option>`).join('');
@@ -2486,7 +2250,7 @@ async function adminDoTopup(){
   const showMsg=(t,ok)=>{if(msg){msg.style.display='block';msg.style.background=ok?'rgba(0,200,100,.08)':'rgba(255,68,68,.08)';msg.style.color=ok?'#00cc88':'#ff8888';msg.style.border=`1px solid ${ok?'rgba(0,200,100,.2)':'rgba(255,68,68,.2)'}`;msg.textContent=t;}};
   if(!uid||!amt||isNaN(amt)){ showMsg('Select user and enter amount',false); return; }
   try {
-    const r=await fetch('/api/admin/wallet/topup',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({userId:uid,amount:parseFloat(amt),description:desc||'Admin top-up'})});
+    const r=await fetch('/api/admin/wallet/topup',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({userId:uid,amount:parseFloat(amt),description:desc||'Admin top-up'})});
     const d=await r.json();
     if(r.ok){ showMsg(`✓ ${d.message} — New balance: ${Number(d.balance).toLocaleString()} ⚡`,true); if(_el('aw-amt'))_el('aw-amt').value=''; adminShowWallet(); }
     else showMsg(d.message||'Failed',false);
@@ -2500,7 +2264,7 @@ async function adminDoDeduct(){
   if(!uid||!amt||isNaN(amt)){ showMsg('Select user and enter amount',false); return; }
   if(!confirm(`Deduct ${amt} COPS from this user?`)) return;
   try {
-    const r=await fetch('/api/admin/wallet/deduct',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.getItem('sh_token')}`},body:JSON.stringify({userId:uid,amount:parseFloat(amt)})});
+    const r=await fetch('/api/admin/wallet/deduct',{method:'POST',headers:{'Content-Type':'application/json',},body:JSON.stringify({userId:uid,amount:parseFloat(amt)})});
     const d=await r.json();
     if(r.ok){ showMsg(`✓ ${d.message} — New balance: ${Number(d.balance).toLocaleString()} ⚡`,true); if(_el('aw-damt'))_el('aw-damt').value=''; adminShowWallet(); }
     else showMsg(d.message||'Failed',false);
@@ -2512,7 +2276,7 @@ async function adminLoadStats(){
   const body = _el('admin-tab-body'); if(!body) return;
   body.innerHTML = `<p style="color:#6688aa;font-size:12px">Loading stats...</p>`;
   try {
-    const r=await fetch('/api/admin/stats',{headers:{Authorization:`Bearer ${localStorage.getItem('sh_token')}`}});
+    const r=await fetch('/api/admin/stats',{headers:{}});
     const d=await r.json();
     body.innerHTML = `
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px">
